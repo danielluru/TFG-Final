@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp20462n1a82a"]
+[gd_scene load_steps=11 format=3 uid="uid://dp20462n1a82a"]
 
 [ext_resource type="Texture2D" uid="uid://dxkyl8jkex46m" path="res://assets/sprites/slime_green.png" id="1_5ku88"]
 [ext_resource type="Script" uid="uid://iku63pmfaijs" path="res://scripts/green_slime.gd" id="1_7ayma"]
@@ -43,7 +43,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctys7"]
 size = Vector2(10, 12)
 
-[node name="GreenSlime" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pvn7"]
+size = Vector2(10, 3)
+
+[node name="GreenSlime" type="CharacterBody2D" groups=["enemigos"]]
 script = ExtResource("1_7ayma")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -53,11 +56,18 @@ autoplay = "default"
 frame = 1
 frame_progress = 0.463888
 
-[node name="Killzone" parent="." instance=ExtResource("2_pbc48")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_ctys7")
+
+[node name="PisotonArea" type="Area2D" parent="." groups=["enemigos"]]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PisotonArea"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_0pvn7")
+
+[node name="Killzone" parent="." instance=ExtResource("2_pbc48")]
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
@@ -66,3 +76,5 @@ target_position = Vector2(8, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
 target_position = Vector2(-8, 0)
+
+[connection signal="area_entered" from="PisotonArea" to="." method="_on_pisoton_area_area_entered"]

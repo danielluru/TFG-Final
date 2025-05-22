@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyoan3376g32b"]
+
+[ext_resource type="Script" uid="uid://hd2cfovhrdtw" path="res://scripts/vida.gd" id="1_jnmme"]
+[ext_resource type="Texture2D" uid="uid://djdcf6w6t5kql" path="res://assets/Heats.png" id="1_nd7lo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3xrs"]
+atlas = ExtResource("1_nd7lo")
+region = Rect2(120, 96, 120, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abp0n"]
+atlas = ExtResource("1_nd7lo")
+region = Rect2(120, 192, 120, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jjgl"]
+atlas = ExtResource("1_nd7lo")
+region = Rect2(120, 288, 120, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jnmme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3xrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abp0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jjgl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nus1y"]
+radius = 6.0
+
+[node name="Vida" type="Node2D"]
+script = ExtResource("1_jnmme")
+
+[node name="Animation" type="AnimatedSprite2D" parent="." groups=["cura"]]
+position = Vector2(4, 0)
+scale = Vector2(0.227083, 0.252604)
+sprite_frames = SubResource("SpriteFrames_jnmme")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="." groups=["cura"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nus1y")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

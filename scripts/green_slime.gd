@@ -9,6 +9,7 @@ var direccion  = 1
 @onready var timer: Timer = $Timer
 @onready var pisoton_area: Area2D = $PisotonArea
 @onready var manolo: CollisionShape2D = $PisotonArea/manolo
+var vidas = 3
 
 func _on_pisoton_area_area_entered(area: Area2D) -> void:
 	if area.name == "ZonaMuertePJ":  # el Area2D debajo del jugador
@@ -30,15 +31,6 @@ func _process(delta):
 
 func _on_timer_timeout() -> void:
 	queue_free()
-	
-
-##func _on_zona_muerte_body_entered(body: Node2D) -> void:
-	##print("Has muerto")
-	##Engine.time_scale = 0.5
-	##body.get_node("CollisionShapeIzq").queue_free()
-	##body.get_node("CollisionShapeDe").queue_free()
-	##timer.start() 
-
 
 func _on_zona_muerte_area_entered(area: Area2D) -> void:
 	##print(str(area))

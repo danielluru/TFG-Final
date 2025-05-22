@@ -124,4 +124,3 @@ shape = SubResource("RectangleShape2D_4q1e0")
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="PisotonArea" to="." method="_on_pisoton_area_area_entered"]
 [connection signal="area_entered" from="ZonaMuerte" to="." method="_on_zona_muerte_area_entered"]
-[connection signal="body_entered" from="ZonaMuerte" to="." method="_on_zona_muerte_body_entered"]

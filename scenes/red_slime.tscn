@@ -126,3 +126,7 @@ shape = SubResource("RectangleShape2D_d2e51")
 [node name="CollisionShapeDe" type="CollisionShape2D" parent="ZonaMuerte"]
 position = Vector2(7, -6)
 shape = SubResource("RectangleShape2D_d2e51")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="PisotonArea" to="." method="_on_pisoton_area_area_entered"]
+[connection signal="area_entered" from="ZonaMuerte" to="." method="_on_zona_muerte_area_entered"]

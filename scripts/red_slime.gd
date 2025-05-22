@@ -44,6 +44,3 @@ func _on_zona_muerte_area_entered(area: Area2D) -> void:
 	##print(str(area))
 	if area.is_in_group("jugador"):
 		area.muerte()
-
-func _on_zona_muerte_body_entered(body: Node2D) -> void:
-	print(str(body))

@@ -63,6 +63,5 @@ func _on_timer_timeout() -> void:
 
 
 func _on_cuerpo_area_entered(area: Area2D) -> void:
-	print(str(area))
 	if area.is_in_group("enemigos"):
 		muerte()

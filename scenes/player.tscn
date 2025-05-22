@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d3q5p5c5quskv"]
+[gd_scene load_steps=35 format=3 uid="uid://d3q5p5c5quskv"]
 
 [ext_resource type="Texture2D" uid="uid://dvyr2a55p14eo" path="res://assets/sprites/knight.png" id="1_jpge6"]
 [ext_resource type="Script" uid="uid://bupa66y2u3j8d" path="res://scripts/player.gd" id="1_skf2n"]
@@ -237,6 +237,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_840cg"]
 size = Vector2(9, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(6.5, 3)
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
@@ -254,5 +257,10 @@ frame_progress = 0.027772
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_840cg")
 
-[node name="RayCastAbajo" type="RayCast2D" parent="."]
-target_position = Vector2(0, 3)
+[node name="ZonaMuerte" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaMuerte"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_g2els")
+
+[connection signal="area_entered" from="ZonaMuerte" to="." method="_on_zona_muerte_area_entered"]

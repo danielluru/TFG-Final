@@ -3,8 +3,9 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
+var vida = 3
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var raycast_abajo = $RayCastAbajo  # Un RayCast2D apuntando hacia abajo
+@onready var zona_muerte: Area2D = $ZonaMuerte
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -38,12 +39,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
-	if raycast_abajo.is_colliding():
-		var collider = raycast_abajo.get_collider()
-		# Verifica si es un enemigo
-		if collider.is_in_group("enemigos") and velocity.y >= 0:
-			collider.queue_free()  # Mata al enemigo
-			velocity.y = -300  # Rebota hacia arriba
 
 	move_and_slide()
+
+func _on_zona_muerte_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemigos") and area.is_in_group("manolo"):
+		velocity.y = -300 

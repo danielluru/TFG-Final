@@ -41,9 +41,8 @@ func _physics_process(delta: float) -> void:
 	
 	if raycast_abajo.is_colliding():
 		var collider = raycast_abajo.get_collider()
-
 		# Verifica si es un enemigo
-		if collider.is_in_group("enemigos") and velocity.y > 0:
+		if collider.is_in_group("enemigos") and velocity.y >= 0:
 			collider.queue_free()  # Mata al enemigo
 			velocity.y = -300  # Rebota hacia arriba
 

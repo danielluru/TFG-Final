@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4w6rn0wip76t"]
+
+[ext_resource type="Script" uid="uid://djgh5j0aytv2m" path="res://scripts/menu.gd" id="1_yqeox"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqeox"]
+bg_color = Color(0.374139, 0.374139, 0.374139, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjb58"]
+bg_color = Color(0.372549, 0.372549, 0.372549, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqeox")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -95.0
+offset_top = -33.0
+offset_right = 105.0
+offset_bottom = 41.0
+
+[node name="Inicio" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_yqeox")
+text = "Iniciar Juego"
+
+[node name="Salir del juego" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_vjb58")
+text = "Salir del Juego"
+
+[connection signal="pressed" from="VBoxContainer/Inicio" to="." method="_on_inicio_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir del juego" to="." method="_on_salir_del_juego_pressed"]

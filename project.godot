@@ -11,13 +11,22 @@ config_version=5
 [application]
 
 config/name="TFG_final"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="uid://b4w6rn0wip76t"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Music="*res://scenes/music.tscn"
+
+[display]
+
+window/size/mode=2
+window/size/resizable=false
+
+[global_group]
+
+enemigos=""
 
 [input]
 

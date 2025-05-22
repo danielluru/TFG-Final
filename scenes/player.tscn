@@ -247,10 +247,12 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_yd6vk")
 animation = &"hit"
 autoplay = "idle"
+frame = 1
+frame_progress = 0.027772
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_840cg")
 
 [node name="RayCastAbajo" type="RayCast2D" parent="."]
-target_position = Vector2(0, 12)
+target_position = Vector2(0, 3)

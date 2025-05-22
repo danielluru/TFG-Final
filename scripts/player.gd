@@ -90,3 +90,6 @@ func _on_cuerpo_area_entered(area: Area2D) -> void:
 	if area.is_in_group("cura"):
 		curar()
 		#area.end()
+	#if area.is_in_group("portal"):
+		#area.cambioEscena()
+		#print(str(area))

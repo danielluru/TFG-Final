@@ -318,23 +318,8 @@ position = Vector2(67, 19)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0.180634, -8)
 zoom = Vector2(3, 3)
-limit_bottom = 200
+limit_bottom = 135
 limit_smoothed = true
-
-[node name="MoneditasTexto" type="Label" parent="Player/Camera2D"]
-offset_left = -176.181
-offset_top = -108.0
-offset_right = -138.181
-offset_bottom = -85.0
-theme_override_fonts/font = ExtResource("5_q3xrs")
-text = "0"
-script = ExtResource("4_6kiof")
-
-[node name="CoinCount" type="Sprite2D" parent="Player"]
-position = Vector2(-185, -109)
-scale = Vector2(1.1875, 1.20312)
-texture = ExtResource("3_6kiof")
-hframes = 12
 
 [node name="GameManager" type="Node2D" parent="Player"]
 position = Vector2(374, -13)
@@ -515,3 +500,19 @@ position = Vector2(1155, -268)
 [node name="MenuPausa" parent="CanvasLayer" instance=ExtResource("11_4xo5w")]
 process_mode = 3
 visible = false
+
+[node name="MoneditasTexto" type="Label" parent="CanvasLayer"]
+offset_left = 55.0
+offset_top = 10.0
+offset_right = 146.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("5_q3xrs")
+theme_override_font_sizes/font_size = 30
+text = "0"
+script = ExtResource("4_6kiof")
+
+[node name="CoinCount" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(27.75, 27.6875)
+scale = Vector2(3.40625, 3.41406)
+texture = ExtResource("3_6kiof")
+hframes = 12

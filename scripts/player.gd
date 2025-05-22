@@ -3,9 +3,12 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
-var vida = 3
+var death = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var zona_muerte: Area2D = $ZonaMuerte
+@onready var timer: Timer = $Timer
+@onready var player: CharacterBody2D = $"."
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -27,9 +30,9 @@ func _physics_process(delta: float) -> void:
 	
 	# Play animations
 	if is_on_floor():
-		if direction == 0:
+		if direction == 0 and death == false:
 			animated_sprite.play("idle")
-		else:
+		elif death == false :
 			animated_sprite.play("run")
 	else:
 		animated_sprite.play("jump")
@@ -45,3 +48,21 @@ func _physics_process(delta: float) -> void:
 func _on_zona_muerte_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemigos") and area.is_in_group("manolo"):
 		velocity.y = -300 
+
+func muerte():
+	death = true
+	animated_sprite.play("death")
+	timer.start(1)
+	player.collision_mask = 2
+	velocity.y = 0
+	GameManager.score = 0
+	
+
+func _on_timer_timeout() -> void:
+	get_tree().reload_current_scene()
+
+
+func _on_cuerpo_area_entered(area: Area2D) -> void:
+	print(str(area))
+	if area.is_in_group("enemigos"):
+		muerte()

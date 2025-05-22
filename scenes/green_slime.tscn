@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dxkyl8jkex46m" path="res://assets/sprites/slime_green.png" id="1_5ku88"]
 [ext_resource type="Script" uid="uid://iku63pmfaijs" path="res://scripts/green_slime.gd" id="1_7ayma"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctys7"]
+size = Vector2(14, 12)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pvn7"]
 atlas = ExtResource("1_5ku88")
 region = Rect2(72, 0, 24, 24)
@@ -73,17 +76,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pvn7"]
-size = Vector2(16, 0.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctys7"]
-size = Vector2(14, 12)
+size = Vector2(14, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q1e0"]
-size = Vector2(3, 9)
+size = Vector2(4.5, 9)
 
 [node name="GreenSlime" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_7ayma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_ctys7")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -109,18 +113,15 @@ target_position = Vector2(-8, 0)
 
 [node name="ZonaMuerte" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaMuerte"]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_ctys7")
-
 [node name="CollisionShapeIzq" type="CollisionShape2D" parent="ZonaMuerte"]
 position = Vector2(-7, -6)
 shape = SubResource("RectangleShape2D_4q1e0")
 
 [node name="CollisionShapeDe" type="CollisionShape2D" parent="ZonaMuerte"]
-position = Vector2(7, -6)
+position = Vector2(7.75, -6)
 shape = SubResource("RectangleShape2D_4q1e0")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="PisotonArea" to="." method="_on_pisoton_area_area_entered"]
+[connection signal="area_entered" from="ZonaMuerte" to="." method="_on_zona_muerte_area_entered"]
 [connection signal="body_entered" from="ZonaMuerte" to="." method="_on_zona_muerte_body_entered"]

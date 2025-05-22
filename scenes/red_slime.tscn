@@ -1,8 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://oarwptqs8xcm"]
+[gd_scene load_steps=16 format=3 uid="uid://oarwptqs8xcm"]
 
 [ext_resource type="Script" uid="uid://1q2uk4sngg50" path="res://scripts/red_slime.gd" id="1_jhcl7"]
 [ext_resource type="Texture2D" uid="uid://crtrd7pnl3tvr" path="res://assets/sprites/slime_purple.png" id="1_t16a3"]
-[ext_resource type="PackedScene" uid="uid://cwp2l15erpajw" path="res://scenes/killzone.tscn" id="2_jhcl7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t16a3"]
+size = Vector2(14, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t16a3"]
+atlas = ExtResource("1_t16a3")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsp21"]
+atlas = ExtResource("1_t16a3")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb02b"]
+atlas = ExtResource("1_t16a3")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2e51"]
+atlas = ExtResource("1_t16a3")
+region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhcl7"]
 atlas = ExtResource("1_t16a3")
@@ -24,6 +42,23 @@ region = Rect2(72, 24, 24, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_t16a3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsp21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb02b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2e51")
+}],
+"loop": true,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jhcl7")
 }, {
 "duration": 1.0,
@@ -40,32 +75,35 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l41y"]
-size = Vector2(10, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsp21"]
+size = Vector2(16, 0.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys1d1"]
-size = Vector2(14, 0.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lb02b"]
+size = Vector2(14, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2e51"]
+size = Vector2(3, 9)
 
 [node name="RedSlime" type="CharacterBody2D" groups=["enemigos"]]
 script = ExtResource("1_jhcl7")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_t16a3")
+
+[node name="Timer" type="Timer" parent="."]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_dp2bf")
+animation = &"death"
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_8l41y")
+[node name="PisotonArea" type="Area2D" parent="." groups=["enemigos", "manolo"]]
 
-[node name="PisotonArea" type="Area2D" parent="." groups=["enemigos"]]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PisotonArea"]
+[node name="manolo" type="CollisionShape2D" parent="PisotonArea" groups=["enemigos", "manolo"]]
 position = Vector2(0, -13.75)
-shape = SubResource("RectangleShape2D_ys1d1")
-
-[node name="Killzone" parent="." instance=ExtResource("2_jhcl7")]
+shape = SubResource("RectangleShape2D_nsp21")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
@@ -74,3 +112,17 @@ target_position = Vector2(8, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
 target_position = Vector2(-8, 0)
+
+[node name="ZonaMuerte" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaMuerte"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_lb02b")
+
+[node name="CollisionShapeIzq" type="CollisionShape2D" parent="ZonaMuerte"]
+position = Vector2(-7, -6)
+shape = SubResource("RectangleShape2D_d2e51")
+
+[node name="CollisionShapeDe" type="CollisionShape2D" parent="ZonaMuerte"]
+position = Vector2(7, -6)
+shape = SubResource("RectangleShape2D_d2e51")

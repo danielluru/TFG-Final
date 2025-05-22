@@ -11,7 +11,7 @@ var direccion  = 1
 @onready var manolo: CollisionShape2D = $PisotonArea/manolo
 
 func _on_pisoton_area_area_entered(area: Area2D) -> void:
-	if area.name == "ZonaMuerte":  # el Area2D debajo del jugador
+	if area.name == "ZonaMuertePJ":  # el Area2D debajo del jugador
 		animated_sprite.play("death")
 		manolo.disabled = true
 		timer.start(0.4)
@@ -38,3 +38,12 @@ func _on_timer_timeout() -> void:
 	##body.get_node("CollisionShapeIzq").queue_free()
 	##body.get_node("CollisionShapeDe").queue_free()
 	##timer.start() 
+
+
+func _on_zona_muerte_area_entered(area: Area2D) -> void:
+	##print(str(area))
+	if area.is_in_group("jugador"):
+		area.muerte()
+
+func _on_zona_muerte_body_entered(body: Node2D) -> void:
+	print(str(body))

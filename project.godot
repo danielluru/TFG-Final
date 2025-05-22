@@ -29,6 +29,7 @@ window/size/resizable=false
 
 enemigos=""
 manolo=""
+jugador=""
 
 [input]
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr0a614o027xq"]
+[gd_scene load_steps=3 format=3 uid="uid://pyo18mo4yg21"]
 
-[ext_resource type="Texture2D" uid="uid://bsqfcw6lc8xwu" path="res://assets/sprites/platforms.png" id="1_bk3qy"]
+[ext_resource type="Texture2D" uid="uid://bsqfcw6lc8xwu" path="res://assets/sprites/platforms.png" id="1_euqji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bk3qy"]
 size = Vector2(16, 10)
@@ -8,10 +8,9 @@ size = Vector2(16, 10)
 [node name="Platform_wellow_small" type="AnimatableBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_bk3qy")
+texture = ExtResource("1_euqji")
 region_enabled = true
-region_rect = Rect2(-0.101254, 32.0434, 16.0985, 9.10189)
+region_rect = Rect2(-0.0225105, 15.9543, 16.161, 9.16937)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bk3qy")
-one_way_collision = true

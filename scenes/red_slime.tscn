@@ -75,8 +75,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsp21"]
-size = Vector2(16, 0.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhcl7"]
+size = Vector2(21, 3.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lb02b"]
 size = Vector2(14, 12)
@@ -102,8 +102,8 @@ autoplay = "default"
 [node name="PisotonArea" type="Area2D" parent="." groups=["enemigos", "manolo"]]
 
 [node name="manolo" type="CollisionShape2D" parent="PisotonArea" groups=["enemigos", "manolo"]]
-position = Vector2(0, -13.75)
-shape = SubResource("RectangleShape2D_nsp21")
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_jhcl7")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, -6)

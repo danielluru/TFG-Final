@@ -87,6 +87,5 @@ func _on_cuerpo_area_entered(area: Area2D) -> void:
 		curar()
 		
 	if area.is_in_group("portal"):
-		print("Hola")
 		SPEED = 0
 		JUMP_VELOCITY = 0

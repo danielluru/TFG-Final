@@ -9,4 +9,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if GameManager.score == GameManager.levelCoins:
-		
+		get_tree().change_scene_to_file("res://scenes/final.tscn")

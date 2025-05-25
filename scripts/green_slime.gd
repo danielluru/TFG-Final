@@ -9,7 +9,6 @@ var direccion  = 1
 @onready var timer: Timer = $Timer
 @onready var pisoton_area: Area2D = $PisotonArea
 @onready var manolo: CollisionShape2D = $PisotonArea/manolo
-var vidas = 3
 
 func _on_pisoton_area_area_entered(area: Area2D) -> void:
 	if area.name == "ZonaMuertePJ":  # el Area2D debajo del jugador

@@ -1,6 +1,6 @@
 extends Node2D
 
-var score = 19
+var score = 0
 var levelCoins = 20
 
 func add_point():

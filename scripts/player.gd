@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 130.0
-const JUMP_VELOCITY = -300.0
+var SPEED = 130.0
+var JUMP_VELOCITY = -300.0
 var death = false
 var vida = 3
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -89,7 +89,8 @@ func _on_cuerpo_area_entered(area: Area2D) -> void:
 	
 	if area.is_in_group("cura"):
 		curar()
-		#area.end()
-	#if area.is_in_group("portal"):
-		#area.cambioEscena()
-		#print(str(area))
+		
+	if area.is_in_group("portal"):
+		print("Hola")
+		SPEED = 0
+		JUMP_VELOCITY = 0
